@@ -18,7 +18,7 @@ function createWindow() {
     });
 
     // 加载index.html文件
-    win.loadFile('index.html');
+    win.loadURL('http://localhost:20000/');
 
     // 打开开发者工具
     win.webContents.openDevTools();

@@ -4,8 +4,8 @@
   "description": "📄 一个小巧且可个性化配置的代码编辑器。A small and personalized code editor.",
   "main": "main.js",
   "scripts": {
-    "start": "npm install && npm run dev",
-    "dev": "electron .",
+    "exe": "electron .",
+    "web": "node_modules/.bin/webpack-dev-server --config webpack.dev.js",
     "debug": "echo 'chrome://inspect/#devices' && electron --inspect-brk ."
   },
   "repository": {
@@ -24,7 +24,29 @@
   "homepage": "https://github.com/yelloxing/Open-Code-Editor#readme",
   "devDependencies": {
     "@yelloxing/normalize.css": "^0.2.2",
+    "autoprefixer": "^9.7.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-dynamic-import-webpack": "^1.1.0",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^2.1.1",
+    "cuf": "^1.2.0",
     "electron": "^8.3.1",
-    "image2d": "^1.7.0"
+    "file-loader": "^4.2.0",
+    "icrush": "^2.0.1",
+    "icrush-loader": "^0.2.1",
+    "icrush-loader-plug": "^0.2.1",
+    "icrush-style-loader": "^1.0.1",
+    "image2d": "^1.7.0",
+    "node-sass": "^4.13.1",
+    "postcss": "^7.0.21",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.3.1",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "url-loader": "^2.2.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^4.2.2"
   }
 }
