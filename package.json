@@ -1,0 +1,30 @@
+{
+  "name": "open-code-editor",
+  "version": "0.0.0",
+  "description": "📄 一个小巧且可个性化配置的代码编辑器。A small and personalized code editor.",
+  "main": "main.js",
+  "scripts": {
+    "start": "npm install && npm run dev",
+    "dev": "electron .",
+    "debug": "echo 'chrome://inspect/#devices' && electron --inspect-brk ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yelloxing/Open-Code-Editor.git"
+  },
+  "keywords": [
+    "electron",
+    "wscode"
+  ],
+  "author": "yelloxing",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yelloxing/Open-Code-Editor/issues"
+  },
+  "homepage": "https://github.com/yelloxing/Open-Code-Editor#readme",
+  "devDependencies": {
+    "@yelloxing/normalize.css": "^0.2.2",
+    "electron": "^8.3.1",
+    "image2d": "^1.7.0"
+  }
+}
