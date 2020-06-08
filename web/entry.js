@@ -7,7 +7,10 @@ import App from './App.iCrush';
 import '@yelloxing/normalize.css';
 
 // 引入公共样式
-import './styles/style.scss';
+import './assets/styles/style.scss';
+
+// 简单的传递信息给node.js的全局方法
+iCrush.prototype.emit = (event, ...params) => nodeRequire('electron').ipcRenderer.send(event, ...params);
 
 //根对象
 window.icrush = new iCrush({

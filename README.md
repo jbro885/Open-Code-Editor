@@ -1,5 +1,9 @@
+
+<p align="center"><a href="https://github.com/yelloxing/Open-Code-Editor" target="_blank">
+<img width="400" src="./src/assets/images/logo.png" alt="Open Code Editor"></a></p>
+
 📄 一个小巧且可个性化配置的代码编辑器。A small and personalized code editor.
-------
+------------------------------------------------------------------------------
 
 > 项目开发中，敬请期待！
 
@@ -23,4 +27,4 @@ chrome://inspect/#devices
 
 [MIT](https://github.com/yelloxing/Open-Code-Editor/blob/master/LICENSE)
 
-Copyright (c) 2020 yelloxing
+Copyright (c) 2020 走一步 再走一步

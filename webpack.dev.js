@@ -5,7 +5,7 @@ const webpack = require('webpack');
 module.exports = merge(common, {
     devServer: {
         contentBase: './',
-        compress: true,
+        compress: false,
         host: 'localhost',
         port: '20000',
         hot: true,

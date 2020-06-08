@@ -1,11 +1,11 @@
 const iCrushLoaderPlugin = require('icrush-loader-plug');
 
 module.exports = {
-    entry: ['./src/entry.js'],
+    entry: ['./web/entry.js'],
     output: {
         path: __dirname,
-        filename: 'dist/main.js',
-        chunkFilename: 'dist/bundle.[name].[chunkhash].js'
+        filename: 'web/dist/main.js',
+        chunkFilename: 'web/dist/bundle.[name].[chunkhash].js'
     },
     module: {
         rules: [{

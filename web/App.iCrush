@@ -1,0 +1,83 @@
+<template>
+    <div class='view'>
+        <div class="menu">
+            <div class="title" style="-webkit-app-region: drag">
+                Open Code Editor
+            </div>
+            <div class="left" style="-webkit-app-region: no-drag">
+                <ui-menu></ui-menu>
+            </div>
+            <div class="right" style="-webkit-app-region: no-drag">
+                <ui-win-btn></ui-win-btn>
+            </div>
+        </div>
+        <div class="content">
+
+        </div>
+        <div class="bottom">
+
+        </div>
+    </div>
+</template>
+<script>
+
+    // 当前页面用到的局部组件
+    import uiMenu from './component/ui-menu.iCrush';/*菜单*/
+    import uiWinBtn from './component/ui-win-btn.iCrush';/*窗口右侧按钮*/
+
+    export default {
+        component: {
+            uiMenu,
+            uiWinBtn
+        }
+    };
+</script>
+<style>
+    div.view {
+        font-size: .12rem;
+        user-select: none;
+
+        &>.menu {
+            background-color: #d6cfe2;
+            height: .3rem;
+            line-height: .3rem;
+            color: #747179;
+            position: relative;
+
+            &>.left {
+                left: 0;
+                background-image: url('./assets/images/logo.png');
+                background-position: .07rem center;
+                background-size: auto 70%;
+                padding-left: .4rem;
+                background-repeat: no-repeat;
+                height: 100%;
+            }
+
+            &>.right {
+                right: 0;
+            }
+
+            &>.left,
+            &>.right {
+                top: 0;
+                position: absolute;
+            }
+
+            &>.title {
+                text-align: center;
+            }
+        }
+
+        &>.content {
+            height: calc(100vh - .56rem);
+        }
+
+        &>.bottom {
+            background-color: #705697;
+            height: .26rem;
+            line-height: .26rem;
+            color: #ffffff;
+        }
+    }
+</style>

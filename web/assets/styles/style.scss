@@ -1,0 +1,19 @@
+html {
+    font-size: 100px;
+}
+
+body {
+    font-size: .16rem;
+}
+
+::-webkit-scrollbar {
+    width: .015rem;
+    height: .015rem;
+    background-color: #eee;
+}
+
+::-webkit-scrollbar-thumb {
+    height: .3rem;
+    background-color: #705697;
+    border-radius: .05rem;
+}
