@@ -1,5 +1,5 @@
 <template>
-    <div class='view'>
+    <div class='view' ctrl-class:notFocus='notFocus'>
         <div class="menu">
             <div class="title" style="-webkit-app-region: drag">
                 Open Code Editor
@@ -45,8 +45,21 @@
 
         data() {
             return {
-                initSize: ["normal", "calc(100vw - 3rem)"]
+                initSize: ["normal", "calc(100vw - 3rem)"],
+                notFocus: false
             };
+        },
+
+        mounted() {
+
+            nodeRequire('electron').ipcRenderer
+
+                // 监听到窗口失去焦点
+                .on("browser-window-blur", () => { this.notFocus = true; })
+
+                // 监听到窗口获得焦点
+                .on("browser-window-focus", () => { this.notFocus = false; });
+
         },
 
         // 挂载局部组件

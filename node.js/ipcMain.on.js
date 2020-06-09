@@ -30,4 +30,10 @@ module.exports = function (win) {
     // 窗口可缩放通知
     win.on('unmaximize', () => { win.webContents.send("unmaximize"); });
 
+    // 窗口失去焦点
+    app.on('browser-window-blur', () => { win.webContents.send("browser-window-blur"); });
+
+    // 窗口获得焦点
+    app.on('browser-window-focus', () => { win.webContents.send("browser-window-focus"); });
+
 };

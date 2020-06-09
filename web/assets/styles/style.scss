@@ -17,3 +17,14 @@ body {
     background-color: #705697;
     border-radius: .05rem;
 }
+
+// 失去光标特殊样式
+body.notFocus {
+    div.view>.menu {
+        background-color: #e6e2ec;
+    }
+
+    div.view>.bottom {
+        background-color: #9c86bd;
+    }
+}

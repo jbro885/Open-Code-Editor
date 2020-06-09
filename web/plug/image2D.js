@@ -1,4 +1,7 @@
+
 import image2D from '../../node_modules/image2d/build/image2D.js';
+
+import { hasClass, deleteClass } from '../server/class.js';
 
 /**
  * 使用方式:import image2D from "image2d";
@@ -34,6 +37,24 @@ image2D.prototype.extend({
             width: this[0].offsetWidth,
             height: this[0].offsetHeight
         };
+    },
+
+    // 添加class
+    addClass(className) {
+        let targetClass = this[0].getAttribute('class') || "";
+        if (!hasClass(targetClass, className)) {
+            this[0].setAttribute('class', targetClass + " " + className);
+        }
+        return this;
+    },
+
+    // 删除class
+    removeClass(className) {
+        let targetClass = this[0].getAttribute('class') || "";
+        if (hasClass(targetClass, className)) {
+            this[0].setAttribute('class', deleteClass(targetClass, className));
+        }
+        return this;
     }
 
 });
