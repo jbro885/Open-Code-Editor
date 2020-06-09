@@ -1,11 +1,37 @@
+<!--
+    @author 心叶(yelloxing)
+    2020年6月8日于大同
+-->
 <template>
     <ul>
         <li @click='emit("minimize")'>最小化</li>
-        <li @click='emit("maximize")'>最大化</li>
-        <li @click='emit("unmaximize")'>自由大小</li>
+        <li @click='emit("maximize")' ctrl-show:no="isMaximize">最大化</li>
+        <li @click='emit("unmaximize")' ctrl-show:yes="isMaximize">自由大小</li>
         <li @click='emit("quit")'>关闭</li>
     </ul>
 </template>
+<script>
+
+    export default {
+        data() {
+            return {
+                isMaximize: "no"
+            };
+        },
+        mounted() {
+
+            nodeRequire('electron').ipcRenderer
+
+                // 监听到窗口最大化
+                .on("maximize", () => { this.isMaximize = 'yes'; })
+
+                // 监听到窗口可缩放
+                .on("unmaximize", () => { this.isMaximize = 'no'; });
+
+        }
+    };
+
+</script>
 <style>
     ul {
         &>li {

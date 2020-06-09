@@ -9,6 +9,9 @@ import '@yelloxing/normalize.css';
 // 引入公共样式
 import './assets/styles/style.scss';
 
+// 引入全局指令
+import './directive/index';
+
 // 简单的传递信息给node.js的全局方法
 iCrush.prototype.emit = (event, ...params) => nodeRequire('electron').ipcRenderer.send(event, ...params);
 

@@ -24,9 +24,9 @@ module.exports = {
             loader: [{
                 loader: "url-loader",
                 options: {
-                    name: "dist/[name].[ext]",
+                    name: "web/dist/[name].[ext]",
                     context: "src/asset",
-                    limit: 5000
+                    limit: 500000000
                 }
             }]
         }]
