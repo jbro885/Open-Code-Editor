@@ -7,6 +7,12 @@
 
 > 项目开发中，敬请期待！
 
+## 开发须知
+
+- 本项目选择的web框架为[iCrush](https://github.com/yelloxing/iCrush),你可以[点击此处查阅文档](https://yelloxing.github.io/iCrush/index.html),如果有任何问题请[点击此处提问](https://github.com/yelloxing/iCrush/issues)。
+
+- 编辑器核心库选择的是[Web Studio Code](https://github.com/yelloxing/Web-Studio-Code)用来提供编辑界面。
+
 ## 如何调试主进程？
 
 首先进入项目，运行：

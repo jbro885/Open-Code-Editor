@@ -5,7 +5,7 @@
                 Open Code Editor
             </div>
             <div class="left" style="-webkit-app-region: no-drag">
-
+                <ui-menu></ui-menu>
             </div>
             <div class="right" style="-webkit-app-region: no-drag">
                 <ui-win-btn></ui-win-btn>
@@ -22,10 +22,12 @@
 <script>
 
     // 当前页面用到的局部组件
+    import uiMenu from './component/ui-menu.iCrush';/*主窗口菜单*/
     import uiWinBtn from './component/ui-win-btn.iCrush';/*窗口右侧按钮*/
 
     export default {
         component: {
+            uiMenu,
             uiWinBtn
         }
     };

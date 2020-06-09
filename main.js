@@ -6,6 +6,8 @@ function createWindow() {
         icon: "./web/assets/images/logo.png",
         width: 900,
         height: 600,
+        minWidth: 700,
+        minHeight: 500,
         resizable: true,
         frame: false,
         webPreferences: {
