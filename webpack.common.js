@@ -7,6 +7,11 @@ module.exports = {
         filename: 'web/dist/main.js',
         chunkFilename: 'web/dist/bundle.[name].[chunkhash].js'
     },
+    resolve: {
+        alias: {
+            'image2d': require('path').resolve(__dirname, 'web/plug/image2D.js')
+        }
+    },
     module: {
         rules: [{
             test: /\.iCrush$/,

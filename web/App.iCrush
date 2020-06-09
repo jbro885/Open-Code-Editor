@@ -5,6 +5,7 @@
                 Open Code Editor
             </div>
             <div class="left" style="-webkit-app-region: no-drag">
+                <!-- 顶部菜单 -->
                 <ui-menu></ui-menu>
             </div>
             <div class="right" style="-webkit-app-region: no-drag">
@@ -12,7 +13,19 @@
             </div>
         </div>
         <div class="content">
-
+            <div class="switch">
+                <!-- 左侧的功能切换 -->
+                <ui-switch></ui-switch>
+            </div>
+            <div class="folder">
+                <!-- 打开的文件夹文件列表 -->
+                <ui-folder></ui-folder>
+            </div>
+            <div move-line:horizontal='initSize'></div>
+            <div class="wscode">
+                <!-- 文本编辑界面 -->
+                <web-studio-code></web-studio-code>
+            </div>
         </div>
         <div class="bottom">
 
@@ -24,11 +37,25 @@
     // 当前页面用到的局部组件
     import uiMenu from './component/ui-menu.iCrush';/*主窗口菜单*/
     import uiWinBtn from './component/ui-win-btn.iCrush';/*窗口右侧按钮*/
+    import uiSwitch from './component/ui-switch.iCrush';/*功能切换*/
+    import uiFolder from './component/ui-folder.iCrush';/*文件夹列表*/
+    import webStudioCode from './component/web-studio-code.iCrush';/*编辑界面*/
 
     export default {
-        component: {
-            uiMenu,
-            uiWinBtn
+
+        data() {
+            return {
+                initSize: ["normal", "calc(100vw - 3rem)"]
+            };
+        },
+
+        // 挂载局部组件
+        component: { uiMenu, uiWinBtn, uiSwitch, uiFolder, webStudioCode },
+
+        methods: {
+            calcFun(index, presize, changesize) {
+
+            }
         }
     };
 </script>
@@ -71,6 +98,30 @@
 
         &>.content {
             height: calc(100vh - .56rem);
+            font-size: 0;
+            white-space: nowrap;
+
+            &>div {
+                display: inline-block;
+                font-size: 12px;
+                height: 100%;
+                white-space: normal;
+
+                &.switch {
+                    background-color: #ededf5;
+                    width: .5rem;
+                }
+
+                &.folder {
+                    background-color: #f2f2f2;
+                    width: 2.4rem;
+                }
+
+                &.wscode {
+                    background-color: #f5f5f5;
+                    width: calc(100vw - 3rem);
+                }
+            }
         }
 
         &>.bottom {
