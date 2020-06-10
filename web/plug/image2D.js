@@ -55,6 +55,15 @@ image2D.prototype.extend({
             this[0].setAttribute('class', deleteClass(targetClass, className));
         }
         return this;
+    },
+
+    // 触发事件
+    trigger(eventType) {
+        let event = document.createEvent('HTMLEvents');
+        // 3个参数：事件类型，是否冒泡，是否阻止浏览器的默认行为
+        event.initEvent(eventType, true, false);
+        this[0].dispatchEvent(event);
+        return this;
     }
 
 });

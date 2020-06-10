@@ -1,8 +1,8 @@
 
 /**
- * <XXX ctrl-class:className='flag' />
+ * <XXX ctrl-body-class:className='flag' />
  * 
- * 说明:flag==true的时候className添加到页面
+ * 说明:flag==true的时候className添加到body页面
  * 
  * @author 心叶(yelloxing)
  * 

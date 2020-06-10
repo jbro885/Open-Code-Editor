@@ -1,9 +1,72 @@
 <!--
     @author 心叶(yelloxing)
-    2020年6月9日于大同
+    2020年6月10日于大同
 -->
 <template>
-    <ul>
-
+    <ul class='view'>
+        <li title='浏览打开的文件' class='folder' ctrl-active-class:folder="flag" @click='doIt("folder")'></li>
+        <li title='查找文件' class='search' ctrl-active-class:search="flag" @click='doIt("search")'></li>
+        <li title='安装插件' class='plug' ctrl-active-class:plug="flag" @click='doIt("plug")'></li>
+        <li title='配置系统' class='set'></li>
     </ul>
 </template>
+<script>
+    import image2D from 'image2d';
+    export default {
+        data() {
+            return {
+                flag: "folder"
+            };
+        },
+        methods: {
+            doIt(flag) {
+                this.flag = flag;
+                image2D(document.body).trigger('oce@switch:' + flag);
+            }
+        }
+    };
+</script>
+<style>
+    ul.view {
+        height: 100%;
+        position: relative;
+        padding-top: .2rem;
+
+        &>li {
+            display: inline-block;
+            width: 100%;
+            height: .5rem;
+            background-image: url(../assets/images/switch.png);
+            cursor: pointer;
+
+            &:hover {
+                background-image: url(../assets/images/switch@hover.png);
+            }
+
+            &.active {
+                border-left: 2px solid #9d91af;
+                background-color: #cecbd238;
+                background-image: url(../assets/images/switch@hover.png);
+            }
+
+            &.folder {
+                background-position-y: 0px;
+            }
+
+            &.search {
+                background-position-y: -63px;
+            }
+
+            &.plug {
+                background-position-y: -134px;
+            }
+
+            &.set {
+                background-position-y: -196px;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+            }
+        }
+    }
+</style>

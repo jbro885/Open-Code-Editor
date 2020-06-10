@@ -1,5 +1,5 @@
 <template>
-    <div class='view' ctrl-class:notFocus='notFocus'>
+    <div class='view' ctrl-body-class:notFocus='notFocus'>
         <div class="menu">
             <div class="title" style="-webkit-app-region: drag">
                 Open Code Editor
@@ -18,8 +18,8 @@
                 <ui-switch></ui-switch>
             </div>
             <div class="folder">
-                <!-- 打开的文件夹文件列表 -->
-                <ui-folder></ui-folder>
+                <!-- 打开的文件夹文件列表(通过功能切换可以切换到查找或安装插件等) -->
+                <component :is='switch'></component>
             </div>
             <div move-line:horizontal='initSize'></div>
             <div class="wscode">
@@ -39,18 +39,30 @@
     import uiWinBtn from './component/ui-win-btn.iCrush';/*窗口右侧按钮*/
     import uiSwitch from './component/ui-switch.iCrush';/*功能切换*/
     import uiFolder from './component/ui-folder.iCrush';/*文件夹列表*/
+    import uiSearch from './component/ui-search.iCrush';/*全局查找*/
+    import uiPlug from './component/ui-plug.iCrush';/*安装插件*/
     import webStudioCode from './component/web-studio-code.iCrush';/*编辑界面*/
+
+    import image2D from 'image2d';
 
     export default {
 
         data() {
             return {
                 initSize: ["normal", "calc(100vw - 3rem)"],
-                notFocus: false
+                notFocus: false,
+                switch: uiFolder
             };
         },
 
         mounted() {
+
+            image2D(document.body)
+
+                // 功能切换
+                .bind('oce@switch:folder', () => { this.switch = uiFolder })
+                .bind('oce@switch:search', () => { this.switch = uiSearch })
+                .bind('oce@switch:plug', () => { this.switch = uiPlug });
 
             nodeRequire('electron').ipcRenderer
 
@@ -119,6 +131,7 @@
                 font-size: 12px;
                 height: 100%;
                 white-space: normal;
+                vertical-align: top;
 
                 &.switch {
                     background-color: #ededf5;
