@@ -3,7 +3,78 @@
     2020年6月10日于大同
 -->
 <template>
-    <ul>
-
-    </ul>
+    <div class='view'>
+        <ul class="nav" id='nav'></ul>
+        <ul class="wscode" id='wscode'></ul>
+    </div>
 </template>
+<script>
+
+    import image2D from 'image2d';
+    import iCrush from 'icrush';
+    import nav from '../pages/nav.iCrush';
+
+    export default {
+
+        data() {
+            return {
+                pages: [],
+                id: null
+            };
+        },
+        methods: {
+            changeShow(id) {
+
+                console.error("切换：" + id);
+
+            },
+            appendPage(page) {
+                page.data.id = page.id;
+
+                // 追加nav头
+                let navEl = image2D(`<div />`).appendTo('#nav');
+                nav.el = navEl[0];
+                nav.el._nodeName = 'I-CRUSH-COMPONENT';
+
+                page.navICrush = new iCrush(nav);
+                page.navICrush.info = page.data;
+
+                // 追加主体内容
+                let elWscode = image2D(`<div />`).appendTo('#wscode');
+                page.component.el = elWscode[0];
+                page.component.el._nodeName = 'I-CRUSH-COMPONENT';
+
+                page.wscodeICrush = new iCrush(page.component);
+                page.wscodeICrush.info = page.data;
+
+                // 登记起来
+                this.pages.push(page);
+
+            }
+        },
+        mounted() {
+
+            // 监听加载界面操作
+            this.on('loadPage', page => {
+                let flag = 'notLoad';
+                this.pages.forEach(item => { if (item.id == page.id) flag = "hadLoad"; });
+
+                // 如果没有打开，切换
+                if (flag == 'notLoad') this.appendPage(page);
+
+                this.changeShow(page.id);
+            });
+
+            // 监听页面关闭
+            this.on('closePage', id => {
+
+                console.error("关闭：" + id);
+
+            });
+
+            // 监听切换
+            this.on('changeShow', id => { this.changeShow(id); });
+
+        }
+    }
+</script>

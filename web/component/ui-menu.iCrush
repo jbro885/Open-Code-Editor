@@ -112,6 +112,7 @@
             &>ul {
                 position: absolute;
                 left: -.01rem;
+                z-index: 1;
 
                 &>li {
 

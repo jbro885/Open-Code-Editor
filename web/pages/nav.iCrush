@@ -1,0 +1,27 @@
+<!--
+    @author 心叶(yelloxing)
+    2020年6月10日于大同
+-->
+<template>
+    <li :lang="info.type" class='view' :name="info.id" @click='changeShow()'>
+        {{info.name}}
+        <em @click.stop='closePage()'>X</em>
+    </li>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                info: {}
+            };
+        },
+        methods: {
+            closePage() {
+                this.trigger('closePage', this.info.id);
+            },
+            changeShow() {
+                this.trigger('changeShow', this.info.id);
+            }
+        }
+    };
+</script>

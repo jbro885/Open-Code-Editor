@@ -7,11 +7,13 @@
         <li title='浏览打开的文件' class='folder' ctrl-active-class:folder="flag" @click='doIt("folder")'></li>
         <li title='查找文件' class='search' ctrl-active-class:search="flag" @click='doIt("search")'></li>
         <li title='安装插件' class='plug' ctrl-active-class:plug="flag" @click='doIt("plug")'></li>
-        <li title='配置系统' class='set'></li>
+        <li title='配置系统' class='set' @click='openSet()'></li>
     </ul>
 </template>
 <script>
-    import image2D from 'image2d';
+
+    import set from '../pages/set.iCrush';
+
     export default {
         data() {
             return {
@@ -21,7 +23,19 @@
         methods: {
             doIt(flag) {
                 this.flag = flag;
-                image2D(document.body).trigger('oce@switch:' + flag);
+                this.trigger('switch', flag);
+            },
+
+            // 打开设置页面
+            openSet() {
+                this.trigger('loadPage', {
+                    id: "oce@set",
+                    component: set,
+                    data: {
+                        name: "设置",
+                        type: "text/plain"
+                    }
+                });
             }
         }
     };

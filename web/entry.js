@@ -15,6 +15,9 @@ import './directive/index';
 // 简单的传递信息给node.js的全局方法
 iCrush.prototype.emit = (event, ...params) => nodeRequire('electron').ipcRenderer.send(event, ...params);
 
+// 引入全局通知机制
+import event from './plug/@event.js'; iCrush.use(event);
+
 //根对象
 window.icrush = new iCrush({
 

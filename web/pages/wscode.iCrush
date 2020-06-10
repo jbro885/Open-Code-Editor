@@ -1,0 +1,14 @@
+<template>
+    <li :name="info.id">
+        文本编辑界面
+    </li>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                info: {}
+            };
+        }
+    };
+</script>
