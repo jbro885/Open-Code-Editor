@@ -1,7 +1,7 @@
 
 import image2D from '../../node_modules/image2d/build/image2D.js';
 
-import { hasClass, deleteClass } from '../server/class.js';
+import { hasClass, deleteClass } from '../server/$classSingle.js';
 
 /**
  * 使用方式:import image2D from "image2d";

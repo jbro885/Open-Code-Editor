@@ -8,7 +8,7 @@
             文件
             <ul>
                 <li>
-                    新建
+                    新建文件
                     <em>Ctrl+N</em>
                 </li>
                 <li class='line'></li>
@@ -16,7 +16,7 @@
                     打开文件
                     <em>Ctrl+O</em>
                 </li>
-                <li>
+                <li @click='trigger("openFolder")'>
                     打开文件夹
                     <em>Ctrl+Shift+O</em>
                 </li>

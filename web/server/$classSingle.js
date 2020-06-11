@@ -1,3 +1,10 @@
+/**
+ * class原子操作
+ * 
+ * @author 心叶(yelloxing)
+ * 
+ * 2020年6月9日于大同
+ */
 
 // targetClass中是否包含checkClass
 

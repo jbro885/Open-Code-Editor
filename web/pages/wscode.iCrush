@@ -8,11 +8,31 @@
     </li>
 </template>
 <script>
+
+    import WSCode from 'wscode';
+
     export default {
         data() {
             return {
-                info: {}
+                info: {},
+                wscode: null
             };
+        },
+        mounted() {
+            window.setTimeout(() => {
+                this.wscode = new WSCode({
+                    el: document.getElementsByName(this.info.id)[1],
+                    content: this.info.content,
+                    color: {
+                        background: '#f5f5f5'
+                    }
+                });
+            });
         }
     };
 </script>
+<style>
+    li {
+        height: calc(100vh - .9rem);
+    }
+</style>

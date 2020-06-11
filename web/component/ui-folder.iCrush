@@ -3,7 +3,120 @@
     2020年6月11日于大同
 -->
 <template>
-    <ul>
-        folder
-    </ul>
+    <div class='view'>
+        <div class="noFolder" ctrl-show:no='hadFolder'>
+            <p>
+                还没有打开任何文件夹或项目。
+            </p>
+            <input type="button" value="打开文件夹" @click='openFolder()'>
+            <p>
+                或者你可以创建一个文件进行编辑，更多细节请进入我们的
+                <a href="https://github.com/yelloxing/Open-Code-Editor/issues">issue</a>
+                进行讨论交流，也欢迎你加入我们。
+            </p>
+            <input type="button" value="创建一个文件" @click='newBlankFile()'>
+        </div>
+        <div class="folder" ctrl-show:yes='hadFolder'>
+
+        </div>
+    </div>
 </template>
+<script>
+
+    import { selectFolder } from '../server/$selectElectron.js';
+    import wscode from '../pages/wscode.iCrush';
+
+    export default {
+        data() {
+            return {
+                hadFolder: 'no'
+            };
+        },
+        mounted() {
+
+            this
+
+                // 监听文件夹打开操作
+                .on('openFolder', () => {
+                    this.openFolder();
+                });
+
+        },
+        methods: {
+
+            // 打开文件夹
+            openFolder() {
+                selectFolder(resultPath => {
+
+                    console.error(resultPath);
+
+                }, '打开文件夹');
+            },
+
+            // 创建空白文本
+            newBlankFile() {
+
+                let flag = 1;
+
+                while (true) {
+                    if (document.getElementsByName("oce@wscode:未命名-" + flag).length <= 0) {
+                        break;
+                    }
+                    flag += 1;
+                }
+
+                // 文件名称
+                let name = "未命名-" + flag;
+
+                this.trigger('loadPage', {
+                    id: "oce@wscode:" + name,
+                    component: wscode,
+                    data: {
+                        name,
+                        type: "text/plain",
+                        content:""
+                    }
+                })
+            }
+        }
+    };
+</script>
+<style>
+    div.view {
+        &>div {
+            &.noFolder {
+
+                padding: .2rem;
+
+                &>p {
+                    line-height: 2em;
+                    margin-top: .2rem;
+                    color: #747179;
+
+                    &>a {
+                        font-size: .14rem;
+                        font-family: cursive;
+                    }
+                }
+
+                &>input[type='button'] {
+                    line-height: .26rem;
+                    width: 100%;
+                    margin-top: .1rem;
+                    color: white;
+                    font-size: .12rem;
+                    cursor: pointer;
+                    border: none;
+                    outline: none;
+                    background-color: #816e9e;
+
+                    &:hover {
+                        background-color: #705697;
+                    }
+                }
+            }
+
+            &.folder {}
+        }
+    }
+</style>
