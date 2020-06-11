@@ -23,12 +23,12 @@ image2D.prototype.extend({
 
     // 前一个兄弟
     previous() {
-        return image2D(this[0].previousElementSibling);
+        return image2D(this[0].previousElementSibling || []);
     },
 
     // 后一个兄弟
     next() {
-        return image2D(this[0].nextElementSibling);
+        return image2D(this[0].nextElementSibling || []);
     },
 
     // 尺寸
@@ -37,6 +37,11 @@ image2D.prototype.extend({
             width: this[0].offsetWidth,
             height: this[0].offsetHeight
         };
+    },
+
+    // 判断是否存在该class
+    hasClass(className) {
+        return hasClass(this.attr('class'), className);
     },
 
     // 添加class

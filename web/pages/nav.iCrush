@@ -1,9 +1,9 @@
 <!--
     @author 心叶(yelloxing)
-    2020年6月10日于大同
+    2020年6月11日于大同
 -->
 <template>
-    <li :lang="info.type" class='view' :name="info.id" @click='changeShow()'>
+    <li :lang="info.type" :name="info.id" @click='changeShow()'>
         {{info.name}}
         <em @click.stop='closePage()'>X</em>
     </li>
@@ -25,3 +25,37 @@
         }
     };
 </script>
+<style>
+    li {
+        display: inline-block;
+        padding: 0 .3rem;
+        position: relative;
+        cursor: pointer;
+        background-color: #e6e6e6;
+
+        &:not(:first-child) {
+            border-left: .01rem solid #f5f5f5;
+        }
+
+        &>em {
+            font-style: normal;
+            position: absolute;
+            display: none;
+            width: .3rem;
+            right: 0;
+            text-align: center;
+        }
+
+        &:hover>em {
+            display: inline-block;
+        }
+
+        &.active {
+            background-color: #f5f5f5;
+
+            &>em {
+                display: inline-block;
+            }
+        }
+    }
+</style>

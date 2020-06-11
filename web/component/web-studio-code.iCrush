@@ -3,13 +3,34 @@
     2020年6月10日于大同
 -->
 <template>
-    <div class='view'>
+    <div>
         <ul class="nav" id='nav'></ul>
-        <ul class="wscode" id='wscode'></ul>
+        <ul class="wscode" id='wscode'>
+            <li class='welcome'>
+                <div>
+                    <p class="logo"></p>
+                    <p class="cmd">
+                        <span>新建文件</span>
+                        <span><em>Ctrl</em>+<em>N</em></span>
+                    </p>
+                    <p class="cmd">
+                        <span>打开文件</span>
+                        <span><em>Ctrl</em>+<em>O</em></span>
+                    </p>
+                    <p class="cmd">
+                        <span>打开文件夹</span>
+                        <span><em>Ctrl</em>+<em>Shift</em>+<em>O</em></span>
+                    </p>
+                    <p class="cmd">
+                        <span>保存</span>
+                        <span><em>Ctrl</em>+<em>S</em></span>
+                    </p>
+                </div>
+            </li>
+        </ul>
     </div>
 </template>
 <script>
-
     import image2D from 'image2d';
     import iCrush from 'icrush';
     import nav from '../pages/nav.iCrush';
@@ -18,14 +39,25 @@
 
         data() {
             return {
-                pages: [],
-                id: null
+                pages: []
             };
         },
         methods: {
             changeShow(id) {
 
-                console.error("切换：" + id);
+                this.pages.forEach(page => {
+
+                    let els = document.getElementsByName(page.id);
+
+                    if (page.id == id) {
+                        image2D(els[0]).addClass('active');
+                        els[1].style.display = '';
+                    } else {
+                        image2D(els[0]).removeClass('active');
+                        els[1].style.display = 'none';
+                    }
+
+                });
 
             },
             appendPage(page) {
@@ -57,7 +89,9 @@
             // 监听加载界面操作
             this.on('loadPage', page => {
                 let flag = 'notLoad';
-                this.pages.forEach(item => { if (item.id == page.id) flag = "hadLoad"; });
+                this.pages.forEach(item => {
+                    if (item.id == page.id) flag = "hadLoad";
+                });
 
                 // 如果没有打开，切换
                 if (flag == 'notLoad') this.appendPage(page);
@@ -68,13 +102,136 @@
             // 监听页面关闭
             this.on('closePage', id => {
 
-                console.error("关闭：" + id);
+                // 关闭前打开新的页面
+                if (this.pages.length > 1) {
+                    let current = image2D(document.getElementsByName(id)[0]);
+
+                    // 如果当前关闭的是活跃窗口
+                    if (current.hasClass('active')) {
+                        let previous = current.previous();
+                        if (previous.length > 0) {
+                            previous.trigger('click');
+                        } else {
+                            current.next().trigger('click');
+                        }
+                    }
+                }
+
+                // 关闭页面
+                for (let index = 0; index < this.pages.length; index++) {
+
+                    if (id == this.pages[index].id) {
+                        let page = this.pages[index];
+
+                        page.navICrush.$$lifecycle("beforeDestroy");
+                        page.wscodeICrush.$$lifecycle("beforeDestroy");
+
+                        // 删除结点
+                        image2D(document.getElementsByName(id)).remove();
+
+                        // 删除数组中数据
+                        this.pages.splice(index, 1);
+
+                        page.navICrush.$$lifecycle("destroyed");
+                        page.wscodeICrush.$$lifecycle("destroyed");
+
+                        break;
+                    }
+
+                }
 
             });
 
             // 监听切换
-            this.on('changeShow', id => { this.changeShow(id); });
+            this.on('changeShow', id => {
+                this.changeShow(id);
+            });
 
         }
     }
 </script>
+<style>
+    div {
+        &>ul {
+            &.nav {
+                line-height: .34rem;
+                height: .34rem;
+                background-color: #f0f0f1;
+                width: calc(100% + 5px);
+                margin-left: -5px;
+                overflow-x: auto;
+                overflow-y: hidden;
+                white-space: nowrap;
+            }
+
+            &.wscode {
+                position: relative;
+                height: calc(100% - .34rem);
+
+                &>li.welcome {
+                    overflow: auto;
+                    display: none;
+                    position: absolute;
+                    background: #f5f5f5;
+                    width: calc(100% + 5px);
+                    left: -5px;
+                    top: -.34rem;
+                    height: calc(100vh - .56rem);
+                    line-height: calc(100vh - .56rem);
+                    text-align: center;
+
+                    &:first-child:last-child {
+                        display: inline-block;
+                    }
+
+                    &>div {
+                        line-height: 1em;
+                        vertical-align: middle;
+                        display: inline-block;
+
+                        &>p {
+                            &.logo {
+                                height: 3rem;
+                                background-image: url(../assets/images/logo@welcome.png);
+                                background-repeat: no-repeat;
+                                background-position: center center;
+                                background-size: auto 90%;
+                            }
+
+                            &.cmd {
+                                white-space: nowrap;
+
+                                &>span {
+                                    display: inline-block;
+                                    width: 2rem;
+                                    font-size: 0.14rem;
+                                    line-height: 2em;
+                                    color: rgb(128, 123, 123);
+
+                                    &:first-child {
+                                        text-align: right;
+                                        padding-right: 0.1rem;
+                                    }
+
+                                    &:last-child {
+                                        text-align: left;
+                                        padding-left: 0.1rem;
+
+                                        &>em {
+                                            font-style: normal;
+                                            background-color: #eae7e7;
+                                            color: #2d2b2b;
+                                            padding: 0 0.05rem;
+                                            font-size: 0.12rem;
+                                            margin: 0 .1rem;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+</style>

@@ -19,7 +19,15 @@
             </div>
             <div class="folder">
                 <!-- 打开的文件夹文件列表(通过功能切换可以切换到查找或安装插件等) -->
-                <component :is='switch'></component>
+                <div ctrl-show:folder="switch">
+                    <ui-folder></ui-folder>
+                </div>
+                <div ctrl-show:search="switch">
+                    <ui-search></ui-search>
+                </div>
+                <div ctrl-show:plug="switch">
+                    <ui-plug></ui-plug>
+                </div>
             </div>
             <div move-line:horizontal='initSize'></div>
             <div class="wscode">
@@ -51,7 +59,7 @@
             return {
                 initSize: ["normal", "calc(100vw - 3rem)"],
                 notFocus: false,
-                switch: uiFolder
+                switch: "folder"
             };
         },
 
@@ -59,11 +67,7 @@
 
             // 功能切换
             this.on('switch', flag => {
-                this.switch = {
-                    folder: uiFolder,
-                    search: uiSearch,
-                    plug: uiPlug
-                }[flag];
+                this.switch = flag;
             });
 
             nodeRequire('electron').ipcRenderer
@@ -77,7 +81,7 @@
         },
 
         // 挂载局部组件
-        component: { uiMenu, uiWinBtn, uiSwitch, webStudioCode },
+        component: { uiMenu, uiWinBtn, uiSwitch, webStudioCode, uiFolder, uiSearch, uiPlug },
 
         methods: {
             calcFun(index, presize, changesize) {
