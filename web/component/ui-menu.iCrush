@@ -7,7 +7,7 @@
         <li>
             文件
             <ul>
-                <li>
+                <li @click='trigger("newBlankFile")'>
                     新建文件
                     <em>Ctrl+N</em>
                 </li>

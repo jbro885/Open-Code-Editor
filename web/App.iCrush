@@ -147,6 +147,11 @@
                 &.folder {
                     background-color: #f2f2f2;
                     width: 2.4rem;
+
+                    &>div {
+                        height: inherit;
+                        overflow: auto;
+                    }
                 }
 
                 &.wscode {

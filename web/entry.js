@@ -18,6 +18,9 @@ iCrush.prototype.emit = (event, ...params) => nodeRequire('electron').ipcRendere
 // 引入全局通知机制
 import event from './plug/@event.js'; iCrush.use(event);
 
+// 引入键盘按键组合
+import keyString from '@yelloxing/core.js/tools/keyString';
+
 //根对象
 window.icrush = new iCrush({
 
@@ -25,5 +28,31 @@ window.icrush = new iCrush({
     el: document.getElementById('root'),
 
     // 启动iCrush
-    render: createElement => createElement(App)
+    render: createElement => createElement(App),
+
+    mounted() {
+
+        // 全局快捷键
+        nodeRequire('image2d')(document.body).bind('keydown', event => {
+
+            switch (keyString(event)) {
+
+                // 打开文件夹
+                case "ctrl+shift+o": {
+                    this.trigger("openFolder");
+                    break;
+                }
+
+                // 新建空白文本
+                case "ctrl+n": {
+                    this.trigger("newBlankFile");
+                    break;
+                }
+
+            }
+
+        });
+
+    }
+
 });

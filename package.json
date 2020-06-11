@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/yelloxing/Open-Code-Editor#readme",
   "devDependencies": {
+    "@yelloxing/core.js":"^0.3.7",
     "@yelloxing/normalize.css": "^0.2.2",
     "autoprefixer": "^9.7.1",
     "babel-core": "^6.26.3",
