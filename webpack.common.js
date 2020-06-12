@@ -30,7 +30,7 @@ module.exports = {
                 loader: "url-loader",
                 options: {
                     name: "web/dist/[name].[ext]",
-                    context: "src/asset",
+                    context: "web/assets",
                     limit: 500000000
                 }
             }]

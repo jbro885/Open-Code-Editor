@@ -6,7 +6,8 @@
   "scripts": {
     "exe": "electron .",
     "web": "node_modules/.bin/webpack-dev-server --config webpack.dev.js",
-    "debug": "echo 'chrome://inspect/#devices' && electron --inspect-brk ."
+    "debug": "echo 'chrome://inspect/#devices' && electron --inspect-brk .",
+    "build": "node_modules/.bin/webpack --config webpack.prod.js"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,7 @@
   },
   "homepage": "https://github.com/yelloxing/Open-Code-Editor#readme",
   "devDependencies": {
-    "@yelloxing/core.js":"^0.3.7",
+    "@yelloxing/core.js": "^0.3.7",
     "@yelloxing/normalize.css": "^0.2.2",
     "autoprefixer": "^9.7.1",
     "babel-core": "^6.26.3",
@@ -43,7 +44,6 @@
     "postcss": "^7.0.21",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.3.1",
-    "uglifyjs-webpack-plugin": "^2.2.0",
     "url-loader": "^2.2.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
