@@ -16,20 +16,20 @@
             </p>
             <input type="button" value="创建一个文件" @click='newBlankFile()'>
         </div>
-        <div class="folder" ctrl-show:yes='hadFolder'>
-
-        </div>
+        <div class="folder" ctrl-show:yes='hadFolder' folder-menu="folderPath"></div>
     </div>
 </template>
 <script>
 
     import { selectFolder } from '../server/$selectElectron.js';
     import wscode from '../pages/wscode.iCrush';
+    import folderMenu from '../directive/folder-menu.js';
 
     export default {
         data() {
             return {
-                hadFolder: 'no'
+                hadFolder: 'no',
+                folderPath: ""
             };
         },
         mounted() {
@@ -51,7 +51,8 @@
             openFolder() {
                 selectFolder(resultPath => {
 
-                    console.error(resultPath);
+                    this.folderPath = resultPath;
+                    this.hadFolder = 'yes';
 
                 }, '打开文件夹');
             },
@@ -77,10 +78,14 @@
                     data: {
                         name,
                         type: "text/plain",
-                        content: ""
+                        content: "",
+                        path: null
                     }
                 })
             }
+        },
+        directive: {
+            folderMenu
         }
     };
 </script>
@@ -119,8 +124,6 @@
                     }
                 }
             }
-
-            &.folder {}
         }
     }
 </style>

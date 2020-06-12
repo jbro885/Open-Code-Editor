@@ -49,6 +49,6 @@
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^4.2.2",
-    "wscode": "^1.7.2"
+    "wscode": "^1.7.4"
   }
 }

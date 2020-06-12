@@ -27,6 +27,14 @@
                         background: '#f5f5f5'
                     }
                 });
+
+                // 文本改动更新提示
+                this.wscode.updated(() => {
+
+                    console.log('文本改动了：' + this.info.id);
+
+                });
+
             });
         }
     };

@@ -1,5 +1,5 @@
 
-import image2D from '../../node_modules/image2d/build/image2D.js';
+const image2D = nodeRequire('image2d');
 
 import { hasClass, deleteClass } from '../server/$classSingle.js';
 
@@ -15,6 +15,26 @@ import { hasClass, deleteClass } from '../server/$classSingle.js';
 
 // 在类上扩展方法
 image2D.extend({
+
+    // 阻止冒泡
+    stopPropagation(event) {
+        event = event || window.event;
+        if (event.stopPropagation) { //这是其他非IE浏览器
+            event.stopPropagation();
+        } else {
+            event.cancelBubble = true;
+        }
+    },
+
+    // 阻止默认事件
+    preventDefault(event) {
+        event = event || window.event;
+        if (event.preventDefault) {
+            event.preventDefault();
+        } else {
+            event.returnValue = false;
+        }
+    }
 
 });
 
@@ -69,6 +89,11 @@ image2D.prototype.extend({
         event.initEvent(eventType, true, false);
         this[0].dispatchEvent(event);
         return this;
+    },
+
+    // 查找孩子结点
+    children() {
+        return image2D(this[0].children);
     }
 
 });
