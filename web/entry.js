@@ -21,6 +21,9 @@ import event from './plug/@event.js'; iCrush.use(event);
 // 引入键盘按键组合
 import keyString from '@yelloxing/core.js/tools/keyString';
 
+// 通过浏览器打开外部链接方法集
+import browserLink from './plug/browserLink'; iCrush.use(browserLink);
+
 //根对象
 window.icrush = new iCrush({
 
