@@ -10,6 +10,7 @@ body {
     width: 0rem;
     height: 0rem;
     background-color: #eee;
+    cursor: pointer;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -19,8 +20,8 @@ body {
 }
 
 :hover::-webkit-scrollbar {
-    width: .03rem;
-    height: .03rem;
+    width: .1rem;
+    height: .1rem;
 }
 
 // 失去光标特殊样式

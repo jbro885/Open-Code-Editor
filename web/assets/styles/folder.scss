@@ -1,0 +1,17 @@
+div.open-code-editor.folder {
+    ul {
+        margin-left: 1em;
+
+        li {
+            line-height: 2em;
+            color: #828181;
+            cursor: pointer;
+
+            &[hadopen='no'] {
+                &>ul {
+                    display: none;
+                }
+            }
+        }
+    }
+}

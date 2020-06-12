@@ -16,7 +16,7 @@
             </p>
             <input type="button" value="创建一个文件" @click='newBlankFile()'>
         </div>
-        <div class="folder" ctrl-show:yes='hadFolder' folder-menu="folderPath"></div>
+        <div class="folder open-code-editor" ctrl-show:yes='hadFolder' folder-menu="folderPath"></div>
     </div>
 </template>
 <script>

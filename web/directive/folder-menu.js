@@ -14,6 +14,8 @@ const fs = nodeRequire('fs');
 import image2D from 'image2d';
 import wscode from '../pages/wscode.iCrush';
 
+import '../assets/styles/folder.scss';
+
 let insertList = function (el, folderPath) {
 
     if (fs.lstatSync(folderPath).isDirectory()) {
@@ -72,7 +74,7 @@ let insertList = function (el, folderPath) {
         const path = el.getAttribute('path');
 
         icrush.trigger('loadPage', {
-            id: "oce@wscode:",
+            id: "oce@wscode:" + path,
             component: wscode,
             data: {
                 name: el.getAttribute('name'),
