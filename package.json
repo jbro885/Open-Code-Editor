@@ -28,6 +28,16 @@
     ],
     "mac": {
       "icon": "./web/assets/images/logo.icns",
+      "fileAssociations": [
+        {
+          "ext": [
+            "oce@config"
+          ],
+          "name": "OCE CONFIG",
+          "icon": "./web/assets/images/logo.icns",
+          "description": "Config Of Open-Code-Editor"
+        }
+      ],
       "target": [
         {
           "target": "dmg"
