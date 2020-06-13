@@ -18,9 +18,6 @@ iCrush.prototype.emit = (event, ...params) => nodeRequire('electron').ipcRendere
 // 引入全局通知机制
 import event from './plug/@event.js'; iCrush.use(event);
 
-// 引入键盘按键组合
-import keyString from '@yelloxing/core.js/tools/keyString';
-
 // 通过浏览器打开外部链接方法集
 import browserLink from './plug/browserLink'; iCrush.use(browserLink);
 
@@ -35,26 +32,76 @@ window.icrush = new iCrush({
 
     mounted() {
 
-        // 全局快捷键
-        nodeRequire('image2d')(document.body).bind('keydown', event => {
+        const Menu = nodeRequire('electron').remote.Menu;
 
-            switch (keyString(event)) {
-
-                // 打开文件夹
-                case "ctrl+shift+o": {
-                    this.trigger("openFolder");
-                    break;
-                }
-
-                // 新建空白文本
-                case "ctrl+n": {
-                    this.trigger("newBlankFile");
-                    break;
-                }
-
+        let menuObj = Menu.buildFromTemplate([
+            {
+                label: 'Open Code Editor',
+                submenu: [
+                    {
+                        label: '退出程序',
+                        click: function () {
+                            icrush.emit("quit");
+                        }
+                    }
+                ]
+            },
+            {
+                label: '文件',
+                submenu: [
+                    {
+                        label: '新建文件',
+                        accelerator: 'CmdOrCtrl+N',
+                        click: function () {
+                            icrush.trigger("newBlankFile");
+                        }
+                    },
+                    {
+                        type: 'separator'
+                    },
+                    {
+                        label: '打开文件',
+                        accelerator: 'CmdOrCtrl+O',
+                        click: function () {
+                            alert('打开文件');
+                        }
+                    }, {
+                        label: '打开文件夹',
+                        accelerator: 'CmdOrCtrl+Shift+O',
+                        click: function () {
+                            icrush.trigger("openFolder");
+                        }
+                    }, {
+                        label: '最近打开',
+                        click: function () {
+                            alert('最近打开');
+                        }
+                    }, {
+                        type: 'separator'
+                    },
+                    {
+                        label: '保存文件',
+                        accelerator: 'CmdOrCtrl+S',
+                        click: function () {
+                            alert('保存文件');
+                        }
+                    }
+                ]
+            },
+            {
+                label: '帮助',
+                submenu: [
+                    {
+                        label: '关于我们',
+                        click: function () {
+                            alert('点击了关于我们');
+                        }
+                    }
+                ]
             }
+        ]);
 
-        });
+        Menu.setApplicationMenu(menuObj);
 
     }
 
