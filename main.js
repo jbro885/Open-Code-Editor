@@ -22,10 +22,11 @@ function createWindow() {
         }
     });
 
-    // 加载index.html文件
-    win.loadURL('http://localhost:20000/');
+    // 生产模式
+    // win.loadFile('index.html');
 
-    // 打开开发者工具
+    // 开发模式
+    win.loadURL('http://localhost:20000/');
     win.webContents.openDevTools();
 
     return win;
