@@ -22,12 +22,16 @@ function createWindow() {
         }
     });
 
-    // 生产模式
-    // win.loadFile('index.html');
-
     // 开发模式
-    win.loadURL('http://localhost:20000/');
-    win.webContents.openDevTools();
+    if ((process.env.NODE_ENV + "").trim() == 'development') {
+        win.loadURL('http://localhost:20000/');
+        win.webContents.openDevTools();
+    }
+
+    // 生产模式
+    else {
+        win.loadFile('index.html');
+    }
 
     return win;
 

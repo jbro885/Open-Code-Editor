@@ -4,10 +4,14 @@
   "description": "📄 一个小巧且可个性化配置的代码编辑器。A small and personalized code editor.",
   "main": "main.js",
   "scripts": {
-    "exe": "electron .",
+    "exe-win": "set NODE_ENV=development && electron .",
+    "exe-mac": "export NODE_ENV=development && electron .",
     "web": "node_modules/.bin/webpack-dev-server --config webpack.dev.js",
-    "debug": "echo 'chrome://inspect/#devices' && electron --inspect-brk .",
-    "build": "node_modules/.bin/webpack --config webpack.prod.js && electron-builder"
+    "debug-win": "set NODE_ENV=development && echo 'chrome://inspect/#devices' && electron --inspect-brk .",
+    "debug-mac": "export NODE_ENV=development && echo 'chrome://inspect/#devices' && electron --inspect-brk .",
+    "build": "node_modules/.bin/webpack --config webpack.prod.js && electron-builder",
+    "build-win": "set NODE_ENV=production && npm run build",
+    "build-mac": "export NODE_ENV=production && npm run build"
   },
   "build": {
     "productName": "Open Code Editor",
@@ -20,16 +24,32 @@
       "./node.js/**/*",
       "./index.html",
       "./main.js",
-      "./web/assets/images/logo.png"
+      "./web/assets/**/*"
     ],
     "mac": {
+      "icon": "./web/assets/images/logo.icns",
       "target": [
         {
           "target": "dmg"
         }
       ]
     },
+    "dmg": {
+      "title": "Open Code Editor",
+      "icon": "./web/assets/images/logo.icns"
+    },
     "win": {
+      "icon": "./web/assets/images/logo256.ico",
+      "fileAssociations": [
+        {
+          "ext": [
+            "oce@config"
+          ],
+          "name": "OCE CONFIG",
+          "icon": "./web/assets/images/logo128.ico",
+          "description": "Config Of Open-Code-Editor"
+        }
+      ],
       "target": [
         {
           "target": "nsis"
@@ -41,7 +61,9 @@
       "allowElevation": true,
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
-      "createStartMenuShortcut": true
+      "createStartMenuShortcut": true,
+      "installerHeaderIcon": "./web/assets/images/logo64.ico",
+      "installerIcon": "./web/assets/images/logo64.ico"
     }
   },
   "repository": {
