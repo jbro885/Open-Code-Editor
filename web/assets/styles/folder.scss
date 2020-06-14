@@ -17,6 +17,36 @@ div.open-code-editor.folder {
                     display: none;
                 }
             }
+
+            &>span {
+                background-image: url(../images/icon@default.png);
+                background-repeat: no-repeat;
+                padding-left: 25px;
+            }
+
+            &[type='file']>span {
+                background-position-y: 5px;
+            }
+
+            &[type='folder'] {
+                &>span {
+                    background-position-y: -42px;
+
+                }
+
+                &[hadopen='yes'] {
+                    &>span {
+                        background-position-y: -81px;
+
+                    }
+                }
+            }
+
+
         }
+    }
+
+    &>ul {
+        margin-left: 0;
     }
 }

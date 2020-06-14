@@ -45,7 +45,9 @@ let insertList = function (el, folderPath) {
             // 判断是文件夹还是文本
             let type = fs.lstatSync(filePath).isDirectory() ? "folder" : "file";
 
-            template += `<li path='${filePath}' name='${file}' type='${type}'>${file}</li>`;
+            template += `<li path='${filePath}' name='${file}' type='${type}'>
+                <span>${file}</span>
+            </li>`;
 
         });
 

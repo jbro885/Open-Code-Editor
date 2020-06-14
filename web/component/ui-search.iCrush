@@ -1,9 +1,17 @@
-<!--
-    @author 心叶(yelloxing)
-    2020年6月14日于南京
--->
 <template>
-    <ul>
-        search
-    </ul>
+    <div class='view'>
+        查找功能设计中...
+    </div>
 </template>
+<style>
+    div.view {
+        background-image: url(../assets/images/cry.png);
+        text-align: center;
+        line-height: 5em;
+        padding-top: 2rem;
+        background-position: center top;
+        background-size: 90% auto;
+        background-repeat: no-repeat;
+        margin-top: .7rem;
+    }
+</style>
