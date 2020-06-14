@@ -1,0 +1,71 @@
+/*
+  @author 心叶(yelloxing)
+  2020年6月14日于南京
+*/
+
+body[system='mac'] {
+
+  // 自定义菜单隐藏
+  div.view>.menu>.left {
+    display: none;
+  }
+
+  // 关闭、最小化等窗口按钮样式修改
+  div.view>.menu>.right {
+    left: 0;
+    width: 70px;
+
+    &>ul {
+      position: relative;
+      margin-left: 25px;
+
+      &:hover {
+        &>li {
+          &:nth-child(1) {
+            background-position-x: 369px;
+          }
+
+          &:nth-child(2) {
+            background-position-x: -103px;
+          }
+
+          &:nth-child(3) {
+            background-position-x: 131px;
+          }
+
+          &:nth-child(4) {
+            background-position-x: -1px;
+          }
+        }
+      }
+
+      &>li {
+        width: .2rem;
+        background-image: url(../images/win-btn@mac.png);
+
+        &:hover {
+          background-color: #0000;
+        }
+
+        &:nth-child(1) {
+          background-position-x: 77px;
+        }
+
+        &:nth-child(2) {
+          background-position-x: 257px;
+        }
+
+        &:nth-child(3) {
+          background-position-x: 257px;
+        }
+
+        &:nth-child(4) {
+          background-position-x: -225px;
+          position: absolute;
+          left: -21px;
+        }
+      }
+    }
+  }
+
+}

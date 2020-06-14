@@ -1,3 +1,8 @@
+/*
+  @author 心叶(yelloxing)
+  2020年6月8日于大同
+ */
+
 import iCrush from 'icrush';
 
 // 引入启动界面
@@ -8,6 +13,9 @@ import '@yelloxing/normalize.css';
 
 // 引入公共样式
 import './assets/styles/style.scss';
+
+// Mac电脑特殊样式
+import './assets/styles/mac.scss';
 
 // 引入全局指令
 import './directive/index';
@@ -40,6 +48,7 @@ window.icrush = new iCrush({
                 submenu: [
                     {
                         label: '退出程序',
+                        accelerator: 'CmdOrCtrl+Q',
                         click: function () {
                             icrush.emit("quit");
                         }
