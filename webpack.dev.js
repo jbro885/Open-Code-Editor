@@ -7,7 +7,7 @@ module.exports = merge(common, {
         contentBase: './',
         compress: false,
         host: 'localhost',
-        port: '20000',
+        port: '20002',
         hot: true,
         inline: true,
         historyApiFallback: true,

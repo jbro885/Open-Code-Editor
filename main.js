@@ -24,7 +24,7 @@ function createWindow() {
 
     // 开发模式
     if ((process.env.NODE_ENV + "").trim() == 'development') {
-        win.loadURL('http://localhost:20000/');
+        win.loadURL('http://localhost:20002/');
         win.webContents.openDevTools();
     }
 

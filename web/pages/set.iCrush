@@ -1,12 +1,9 @@
-<!--
-    @author 心叶(yelloxing)
-    2020年6月15日于南京
--->
 <template>
-    <li :name="info.id">
-        设置界面
+    <li class='view' :name="info.id">
+        设置模块设计中...
     </li>
 </template>
+
 <script>
     export default {
         data() {
@@ -16,3 +13,15 @@
         }
     };
 </script>
+<style>
+    li.view {
+        background-image: url(../assets/images/cry.png);
+        text-align: center;
+        line-height: 5em;
+        padding-top: 2rem;
+        background-position: center top;
+        background-size: 2rem auto;
+        background-repeat: no-repeat;
+        margin-top: .7rem;
+    }
+</style>
