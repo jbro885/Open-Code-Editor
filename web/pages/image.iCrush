@@ -1,0 +1,30 @@
+<!--
+    @author 心叶(yelloxing)
+    2020年7月1日于南京
+-->
+<template>
+    <li :name="info.id"></li>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                info: {}
+            };
+        },
+        mounted() {
+            window.setTimeout(() => {
+                let path = (this.info.path + "").replace(/\\/g, '/');
+                document.getElementsByName(this.info.id)[1].style.backgroundImage = "url(" + path + ")";
+            });
+        }
+    };
+</script>
+<style>
+    li {
+        height: calc(100vh - .9rem);
+        background-repeat: no-repeat;
+        background-size: auto;
+        background-position: center center;
+    }
+</style>

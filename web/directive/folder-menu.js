@@ -13,6 +13,8 @@ const path = nodeRequire('path');
 const fs = nodeRequire('fs');
 import image2D from 'image2d';
 import wscode from '../pages/wscode.iCrush';
+import image from '../pages/image.iCrush';
+import $fileType from '../server/$fileType';
 
 import '../assets/styles/folder.scss';
 
@@ -38,20 +40,45 @@ let insertList = function (el, folderPath) {
         // 读取子文件
         const subFiles = fs.readdirSync(folderPath);
 
+        let fileTemplate = "", folderTemplate = "";
+
+
         subFiles.forEach(function (file) {
 
             let filePath = path.join(folderPath, "./" + file);
 
             // 判断是文件夹还是文本
-            let type = fs.lstatSync(filePath).isDirectory() ? "folder" : "file";
+            if (fs.lstatSync(filePath).isDirectory()) {
 
-            template += `<li path='${filePath}' name='${file}' type='${type}'>
+                // 过滤一些文件夹不显示
+                if (['.git'].indexOf(file) < 0) {
+
+                    folderTemplate += `<li path='${filePath}' name='${file}' type='folder'>
                 <span>${file}</span>
             </li>`;
 
+                }
+
+            } else {
+
+                // 过滤一些文件不显示
+                if (['.DS_Store'].indexOf(file) < 0) {
+
+                    let fileTypeResult = $fileType(file);
+
+                    console.log(fileTypeResult);
+
+                    fileTemplate += `<li path='${filePath}' wscode-lang='${fileTypeResult.wscode}'  icon-lang='${fileTypeResult.lang}' name='${file}' type='file'>
+                <span>${file}</span>
+            </li>`;
+
+                }
+
+            }
+
         });
 
-        template += "</ul>";
+        template += `${folderTemplate}${fileTemplate}</ul>`;
 
         let ulDom = image2D(template);
 
@@ -75,16 +102,37 @@ let insertList = function (el, folderPath) {
 
         const path = el.getAttribute('path');
 
-        icrush.trigger('loadPage', {
-            id: "oce@wscode:" + path,
-            component: wscode,
-            data: {
-                name: el.getAttribute('name'),
-                type: "text/plain",
-                content: fs.readFileSync(path, 'utf-8'),
-                path
-            }
-        });
+        // 如果是图片
+
+        if (el.getAttribute('wscode-lang') == 'image') {
+
+            icrush.trigger('loadPage', {
+                id: "oce@image:" + path,
+                component: image,
+                data: {
+                    name: el.getAttribute('name'),
+                    path
+                }
+            });
+
+        }
+
+        // 默认使用文本编辑器 Web Studio Code 打开
+
+        else {
+
+            icrush.trigger('loadPage', {
+                id: "oce@wscode:" + path,
+                component: wscode,
+                data: {
+                    name: el.getAttribute('name'),
+                    type: el.getAttribute('wscode-lang'),
+                    content: fs.readFileSync(path, 'utf-8'),
+                    path
+                }
+            });
+
+        }
 
     }
 

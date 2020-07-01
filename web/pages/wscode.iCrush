@@ -18,19 +18,7 @@
         mounted() {
             window.setTimeout(() => {
 
-                let filename = (this.info.name + "").toLowerCase();
-
-                // 内置的语言类型
-                let lang = "normal";
-                if (/\.js$/.test(filename)) {
-                    lang = 'javascript';
-                } else if (/\.css$/.test(filename)) {
-                    lang = 'css';
-                } else if (/\.icrush$/.test(filename) || /\.html$/.test(filename) || /\.htm$/.test(filename)) {
-                    lang = 'html';
-                } else if (/\.json$/.test(filename)) {
-                    lang = 'json';
-                }
+                let lang = this.info.type;
 
                 this.wscode = new WSCode({
                     el: document.getElementsByName(this.info.id)[1],

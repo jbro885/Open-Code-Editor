@@ -18,7 +18,7 @@ let doit = function (type, callback, title, defaultPath) {
     dialog.showOpenDialog({
         title,
         properties: [type],
-        defaultPath
+        // defaultPath
     }).then(result => {
         if (result.canceled) {
 

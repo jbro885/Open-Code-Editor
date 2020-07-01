@@ -18,7 +18,10 @@ function createWindow() {
              * 可是，我们依然需要使用 Node.js 和 Electron 提供的 API，因此这里就不禁止了，而是选择在index.html的开头
              * 在引入那些库之前将这些变量重命名
              */
-            nodeIntegration: true
+            nodeIntegration: true,
+
+            // 由于electron窗口的同源策略的问题不允许加载本地文件
+            webSecurity: false
         }
     });
 
