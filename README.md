@@ -71,6 +71,6 @@ npm run build-mac
 
 ## License
 
-[MIT](https://github.com/yelloxing/Open-Code-Editor/blob/master/LICENSE)
+[MIT](https://github.com/AC-angle/Open-Code-Editor/blob/master/LICENSE)
 
-Copyright (c) 2020 走一步 再走一步
+Copyright (c) 2020 AC-angle
