@@ -6,7 +6,13 @@
     <li :name="info.id"></li>
 </template>
 <script>
+
     import WSCode from 'wscode';
+    import image2D from 'image2d';
+
+    const fs = nodeRequire('fs');
+    const path = nodeRequire('path');
+    const { dialog } = nodeRequire('electron').remote;
 
     export default {
         data() {
@@ -41,8 +47,50 @@
 
                 // 文本改动更新提示
                 this.wscode.updated(() => {
+                    image2D(document.getElementsByName(this.info.id)[0]).addClass('modify');
+                });
 
-                    console.log('文本改动了：' + this.info.id);
+                // 监听文件保存命令
+                this.on('saveFile', () => {
+
+                    let navLi = image2D(document.getElementsByName(this.info.id)[0]);
+
+                    let doSave = filepath => {
+                        // 写入文本
+                        fs.writeFileSync(filepath, this.wscode.valueOf(), {
+                            encoding: 'utf8'
+                        });
+
+                        // 成功之后，去掉编辑标志
+                        navLi.removeClass('modify');
+                    };
+
+                    // 只有当前的页面是活动的，且被修改了才需要保存
+                    if (navLi.hasClass('active') && navLi.hasClass('modify')) {
+
+                        let filepath = this.info.id.replace(/^oce@wscode:/, '');
+
+                        // 首先判断是否是新建的，需要选择路径
+                        if (filepath == '未命名-1') {
+
+                            dialog.showOpenDialog({
+                                title: "选择保存路径",
+                                properties: ["openDirectory"]
+                            })
+                                .then(result => {
+                                    if (result.canceled) {
+                                        // todo
+                                    } else {
+                                        filepath = path.join(result.filePaths[0], filepath);
+                                        doSave(filepath);
+                                    }
+                                });
+
+                        } else {
+                            doSave(filepath);
+                        }
+
+                    }
 
                 });
 

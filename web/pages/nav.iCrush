@@ -6,6 +6,7 @@
     <li :lang="info.type" :name="info.id" @click='changeShow()'>
         {{info.name}}
         <em @click.stop='closePage()'>X</em>
+        <span>●</span>
     </li>
 </template>
 <script>
@@ -37,13 +38,18 @@
             border-left: .01rem solid #f5f5f5;
         }
 
-        &>em {
+        &>em,
+        &>span {
             font-style: normal;
             position: absolute;
             display: none;
             width: .3rem;
             right: 0;
             text-align: center;
+        }
+
+        &>span {
+            font-size: 18px;
         }
 
         &:hover>em {
@@ -55,6 +61,30 @@
 
             &>em {
                 display: inline-block;
+            }
+
+            &>span {
+                display: none;
+            }
+        }
+
+        &.modify {
+            &>em {
+                display: none;
+            }
+
+            &>span {
+                display: inline-block;
+            }
+
+            &:hover {
+                &>em {
+                    display: inline-block;
+                }
+
+                &>span {
+                    display: none;
+                }
             }
         }
     }

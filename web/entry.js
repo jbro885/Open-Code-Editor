@@ -92,7 +92,7 @@ window.icrush = new iCrush({
                         label: '保存文件',
                         accelerator: 'CmdOrCtrl+S',
                         click: function () {
-                            alert('保存文件');
+                            icrush.trigger("saveFile");
                         }
                     }
                 ]
