@@ -1,5 +1,5 @@
 
-<p align="center"><a href="https://github.com/yelloxing/Open-Code-Editor" target="_blank">
+<p align="center"><a href="https://github.com/Open-Organize/Open-Code-Editor" target="_blank">
 <img width="400" src="./web/assets/images/logo.png" alt="Open Code Editor"></a></p>
 
 📄 一个小巧且可个性化配置的代码编辑器。A small and personalized code editor.
