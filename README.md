@@ -71,6 +71,6 @@ npm run build-mac
 
 ## License
 
-[MIT](https://github.com/AC-angle/Open-Code-Editor/blob/master/LICENSE)
+[MIT](https://github.com/Open-Organize/Open-Code-Editor/blob/master/LICENSE)
 
-Copyright (c) 2020 AC-angle
+Copyright (c) 2020 Open-Organize
