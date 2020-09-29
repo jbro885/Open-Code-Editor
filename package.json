@@ -78,7 +78,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Open-Organize/Open-Code-Editor.git"
+    "url": "git+https://github.com/yelloxing/Open-Code-Editor.git"
   },
   "keywords": [
     "electron",
@@ -87,9 +87,9 @@
   "author": "yelloxing",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Open-Organize/Open-Code-Editor/issues"
+    "url": "https://github.com/yelloxing/Open-Code-Editor/issues"
   },
-  "homepage": "https://github.com/Open-Organize/Open-Code-Editor#readme",
+  "homepage": "https://github.com/yelloxing/Open-Code-Editor#readme",
   "devDependencies": {
     "autoprefixer": "^9.7.1",
     "babel-core": "^6.26.3",

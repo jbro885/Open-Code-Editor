@@ -1,5 +1,5 @@
 
-<p align="center"><a href="https://github.com/Open-Organize/Open-Code-Editor" target="_blank">
+<p align="center"><a href="https://github.com/yelloxing/Open-Code-Editor" target="_blank">
 <img width="400" src="./web/assets/images/logo.png" alt="Open Code Editor"></a></p>
 
 📄 一个小巧且可个性化配置的代码编辑器。A small and personalized code editor.
@@ -71,6 +71,6 @@ npm run build-mac
 
 ## License
 
-[MIT](https://github.com/Open-Organize/Open-Code-Editor/blob/master/LICENSE)
+[MIT](https://github.com/yelloxing/Open-Code-Editor/blob/master/LICENSE)
 
-Copyright (c) 2020 Open-Organize
+Copyright (c) 2020 yelloxing
