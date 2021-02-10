@@ -9,7 +9,7 @@
 
 ## 开发须知
 
-- 本项目选择的web框架为[quick-paper](https://github.com/hai2007/quick-paper),你可以[点击此处查阅文档](https://hai2007.github.io/quick-paper/index.html),如果有任何问题请[点击此处提问](https://github.com/hai2007/quick-paper/issues)。
+- 本项目选择的web框架为[quick-paper](https://github.com/hai2007/quick-paper),你可以[点击此处查阅文档](https://hai2007.gitee.io/quick-paper/),如果有任何问题请[点击此处提问](https://github.com/hai2007/quick-paper/issues)。
 
 - 编辑器核心库选择的是[Open-Web-Editor](https://github.com/hai2007/Open-Web-Editor)用来提供编辑界面。
 
