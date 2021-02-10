@@ -1,5 +1,5 @@
 <!--
-    @author 心叶(yelloxing)
+    @author 你好2007
     2020年6月11日于大同
 -->
 <template>
@@ -22,7 +22,7 @@
 <script>
 
     import { selectFolder } from '../server/$selectElectron.js';
-    import wscode from '../pages/wscode.iCrush';
+    import owe from '../pages/owe.paper';
     import folderMenu from '../directive/folder-menu.js';
 
     export default {
@@ -73,8 +73,8 @@
                 let name = "未命名-" + flag;
 
                 this.trigger('loadPage', {
-                    id: "oce@wscode:" + name,
-                    component: wscode,
+                    id: "oce@owe:" + name,
+                    component: owe,
                     data: {
                         name,
                         type: "text/plain",

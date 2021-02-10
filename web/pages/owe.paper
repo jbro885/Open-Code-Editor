@@ -1,5 +1,5 @@
 <!--
-    @author 心叶(yelloxing)
+    @author 你好2007
     2020年6月11日于大同
 -->
 <template>
@@ -7,20 +7,18 @@
 </template>
 <script>
 
-    import WSCode from 'wscode';
+    import OpenWebEditor from 'open-web-editor';
     import image2D from 'image2d';
 
     const fs = nodeRequire('fs');
     const path = nodeRequire('path');
     const { dialog } = nodeRequire('electron').remote;
 
-    import prettify from 'wscode-prettify';
-
     export default {
         data() {
             return {
                 info: {},
-                wscode: null
+                owe: null
             };
         },
         mounted() {
@@ -28,7 +26,7 @@
 
                 let lang = this.info.type;
 
-                this.wscode = new WSCode({
+                this.owe = new OpenWebEditor({
                     el: document.getElementsByName(this.info.id)[1],
                     content: this.info.content,
                     color: {
@@ -47,7 +45,7 @@
                     },
 
                     // 着色方法
-                    shader: prettify
+                    // todo
                 });
 
                 // 文本改动更新提示

@@ -22,7 +22,6 @@ export default function (filename) {
     if (endWiths('.css')) return { lang: 'CSS', wscode: 'css' };
     if (endWiths('.html', '.htm')) return { lang: 'HTML', wscode: 'html' };
     if (endWiths('.json')) return { lang: 'JSON', wscode: 'json' };
-    if (endWiths('.icrush')) return { lang: 'iCrush', wscode: 'html' };
     if (endWiths('.scss', '.sass')) return { lang: 'SASS', wscode: 'css' };
     if (endWiths('.png', '.jpg', '.jpeg', '.gif', '.ico')) return { lang: 'Image', wscode: 'image' };
 
